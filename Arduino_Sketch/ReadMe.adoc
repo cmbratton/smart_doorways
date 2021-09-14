@@ -1,0 +1,118 @@
+:Author: Colby Bratton
+:Email: cmb7742@truman.edu
+:Date: 04/04/2021
+:Revision: version# 1.1
+:License: Public Domain
+
+= Project: Towards proximity and mobile device centric
+           intuitive inteeraction schemes to control
+           physical door ways in a smart environment
+           
+= Desc: In this work, we aim to develop an accessibility project to assist the 
+        users with mobility disabilities to intuitively interact with door 
+        plates in a smart environment. In order to open doorways, we want
+        to incorporate emerging computer sensory technologies and explore 
+        proximity sensor based interaction, smart voice based interaction, and 
+        mobile application based interaction techniques in this project. The 
+        techniques may reduce the physical overhead of the users by freeing them
+        up from physically locating and interacting with the door opener plates.
+        
+        In this project, we plan to incorporate Alexa flex voice assistant, 
+        proximity sensor, java based mobile app development tools to implement 
+        the mentioned interaction options. For example, users of the system can
+        initiate action by their proximity to the doors, or use a Bluetooth-enabled
+        mobile device to activate the door plate switch. Afterwards, the door
+        will open without requiring any further interaction. Through the
+        development, our objective is to create live demos and compare the 
+        proposed interaction techniques in this project.
+
+= Goal: The goal of this project is to create a controller or controlling
+        mechanism for an electric, semi-automatic door in which the controller
+        may be used via wireless connections to actuate different functions of
+        the door, such as whether it is open or closed, or whether it is locked
+        or unlocked. The controller may be connected to using either the
+        Iot Cloud interface, which is best manipulated using a smart assistant, 
+        such as Amazon's Alexa, or via a Bluetooth application. The controller
+        may be accessed and manipluated by both servicing entities at the same
+        time, allowing for seamless, stressfree utilization of the door way in 
+        any scenario. By doing so, a user may open or close a door without needing
+        to press a physical button in their surroundings. This provides increased
+        ease of accessibility to those with disabilities as well as it allows 
+        individuals easier access to doorways when completing a given task (think
+        about caring heavy objects through a doorway and needing to open and close
+        the door manually each time). Note that all of this can be done without
+        the need for a smart environment, but utilization of the cellphone application
+        will be required, assuming the door is not to be actuated physically by
+        an individual. 
+
+== Step 1: Installation
+- This project is a currently completed unit that is meant to be used in
+  tandem with the Bluetooth application developed by Colby Bratton,
+  Remote Door Controller. If updated, modified, or changed in any way,
+  all serial interactions must also be updated in the application. All modifications
+  done to the code that is specific to the control, such as handling actuation
+  functions or changing connectivity and control indicators, may be completed without
+  the need to update the application. 
+  
+-NOTE: An Iot Cloud compatible board is REQUIRED to utilize IoT Cloud functions. See
+       Arduino's website for more details.
+  
+  1. Assemble circuit as outlined in Step 2. (The use of a MKR1000 makes this step easier)
+  
+  2. If using a different board, adjust output pins in code as necessary (see list of
+     constants at top of the program). Note that boards equipped with SAMD processors
+     utilize Serial1 for external, pin-based serial communications. If using a different
+     board, Serial and the respective TX/RX pins will need to be utilized. If one wishes
+     to utilize a serial monitor, the Software Serial library is needed to communicate
+     with the HC-05 on different boards.
+  
+  3. Download Door_Control_Final and upload it to MKR1000 (or desired Arduino-compatible
+     board). Folder layout provided in Step 3. Make required file adjustments as outlined
+     in Step 3.
+
+== Step 2: Assemble the circuit
+- Required Components
+-> Arduino Board of your choice (must be IoT Cloud compatible)
+-> HC-05 Bluetooth module
+-> 4 LEDs (different colors for different indicators prefered)
+-> Breadboard and jumper wires
+
+Assemble the circuit following the photo controller_layout.png attached to the sketch
+
+== Step 3: Load the code
+- Before you load the program onto your Arduino board, you must ensure that:
+
+1) arduino_secret.h is updated with information regarding your router,
+   such as SSID and Password so that the board may connect to the IoT Cloud
+   
+2) Arduino IoT Cloud account is created and the variables labeled in
+   thingProperties.h are created under one "Thing," or Arduino board.
+   A screenshot is provided in the folder for brief direction. 
+   These variables should be considered CloudLight objects. 
+   
+3) board is connected to your IoT Cloud account and associated with your
+   controller's control variables, as outlined in the provided screenshot
+   
+4) THING_ID, in thingProperties.h, is updated to ID of your controller/board's
+   unique ID.
+   
+NOTE: All code, including required changes stated above, are easily addressed by
+      utilizing Arduino's online code editor. Import the code via the Arduino
+      editor and get started!
+
+=== Folder structure
+
+....
+ Door_Controller_Final            => Arduino sketch folder
+  ├── Door_Controller_Final.ino     => main Arduino file
+  ├── thingProperties.h             => IoT Cloud init file
+  ├── arduino_secret.h              => router information file
+  ├── layout.png                    => an image of the circuit layout
+  ├── thing_reference.              => controller's Thing reference image
+  └── ReadMe.adoc                   => this file
+....
+
+=== Help
+This document is written in the _AsciiDoc_ format, a markup language to describe documents. 
+If you need help you can search the http://www.methods.co.nz/asciidoc[AsciiDoc homepage]
+or consult the http://powerman.name/doc/asciidoc[AsciiDoc cheatsheet]
