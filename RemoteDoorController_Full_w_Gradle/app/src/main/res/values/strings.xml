@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Remote Door Controller</string>
+    <string name="connect">Connect</string>
+    <string name="open_door_timed">Open Door - Timed</string>
+    <string name="open_door_hold">Open Door - Hold</string>
+    <string name="lock_door">Lock Door</string>
+    <string name="unlock_door">Unlock Door</string>
+</resources>
